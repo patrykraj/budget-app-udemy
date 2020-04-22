@@ -4,19 +4,16 @@ import {
   BUDGET_GET_REQUEST,
   BUDGET_GET_SUCCESS,
   BUDGET_GET_FAILURE,
+  BUDGETED_CATEGORIES_GET,
+  BUDGETED_CATEGORIES_GET_REQUEST,
+  BUDGETED_CATEGORIES_GET_SUCCESS,
+  BUDGETED_CATEGORIES_GET_FAILURE,
 } from "data/constants";
 
 const initialState = {
   loadingState: {},
   budget: {},
   budgetedCategories: [],
-};
-
-const action = {
-  type: "BUDGET_FETCHED",
-  payload: {
-    id: "1",
-  },
 };
 
 function budget(state = initialState, action) {
@@ -49,7 +46,35 @@ function budget(state = initialState, action) {
 
       return {
         ...state,
-        budget: action.payload,
+        budget: {},
+        loadingState: newLoadingState,
+      };
+
+    case BUDGETED_CATEGORIES_GET_REQUEST:
+      return {
+        ...state,
+        loadingState: {
+          ...state.loadingState,
+          // BUDGET_GET_REQUEST: true,
+          [action.type]: LOADING_STATES.LOADING,
+        },
+      };
+
+    case BUDGETED_CATEGORIES_GET_SUCCESS:
+      delete newLoadingState.BUDGETED_CATEGORIES_GET_REQUEST;
+
+      return {
+        ...state,
+        budgetedCategories: action.payload,
+        loadingState: newLoadingState,
+      };
+
+    case BUDGETED_CATEGORIES_GET_FAILURE:
+      delete newLoadingState.BUDGETED_CATEGORIES_GET_REQUEST;
+
+      return {
+        ...state,
+        budgetedCategories: [],
         loadingState: newLoadingState,
       };
 
