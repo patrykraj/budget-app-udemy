@@ -11,6 +11,7 @@ import { Grid } from "./Budget.css";
 import { LoadingIndicator } from "components";
 
 import BudgetCategoryList from "pages/Budget/components/BudgetCategoryList/BudgetCategoryList";
+import BudgetTransactionList from "pages/Budget/components/BudgetTransactionList";
 
 function Budget({
   commonState,
@@ -24,17 +25,19 @@ function Budget({
     fetchBudgetedCategories(1);
     fetchAllCategories();
   }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories]);
-  const isLoaded = useMemo(() => (commonState || budgetState ? false : true), [
-    commonState,
-    budgetState,
-  ]);
+  const isLoaded = useMemo(
+    () => commonState === "LOADED" && Object.keys(budgetState).length === 0,
+    [commonState, budgetState]
+  );
 
   return (
     <Grid>
       <section>
         {isLoaded ? <LoadingIndicator /> : <BudgetCategoryList />}
       </section>
-      <section>{isLoaded ? <LoadingIndicator /> : "Transaction list"}</section>
+      <section>
+        {isLoaded ? <LoadingIndicator /> : <BudgetTransactionList />}
+      </section>
     </Grid>
   );
 }

@@ -7,6 +7,7 @@ import {
   // BUDGETED_CATEGORIES_GET_REQUEST,
   // BUDGETED_CATEGORIES_GET_SUCCESS,
   // BUDGETED_CATEGORIES_GET_FAILURE,
+  SET_SELECTED_PARENT_CATEGORY_ID,
 } from "data/constants";
 
 import API from "data/fetch";
@@ -65,4 +66,11 @@ export const fetchBudgetedCategories = (id) => {
   // }
 
   // po skonczeniu requesta BUDGET_GET_REQUEST przekazac dane z requestu
+};
+
+export const selectParentCategory = (id) => {
+  return {
+    type: SET_SELECTED_PARENT_CATEGORY_ID,
+    payload: id,
+  };
 };
