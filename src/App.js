@@ -3,11 +3,15 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import theme from "utils/theme";
 
 import { Navigation, Wrapper, LoadingIndicator, Button } from "components";
 import Budget from "pages/Budget";
+
+toast.configure();
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -43,7 +47,9 @@ function App() {
             <Route path="/" exact>
               Homepage
             </Route>
-            <Budget />
+            <Route path="/budget">
+              <Budget />
+            </Route>
           </Switch>
         </Wrapper>
       </Router>

@@ -8,6 +8,7 @@ import {
   // BUDGETED_CATEGORIES_GET_SUCCESS,
   // BUDGETED_CATEGORIES_GET_FAILURE,
   SET_SELECTED_PARENT_CATEGORY_ID,
+  BUDGET_TRANSACTION_ADD,
 } from "data/constants";
 
 import API from "data/fetch";
@@ -66,6 +67,16 @@ export const fetchBudgetedCategories = (id) => {
   // }
 
   // po skonczeniu requesta BUDGET_GET_REQUEST przekazac dane z requestu
+};
+
+export const addTransaction = ({ budgetId, data }) => {
+  const promise = API.budget.addTransaction({ budgetId, data });
+
+  return {
+    type: BUDGET_TRANSACTION_ADD,
+    promise,
+    successMessage: "Transaction has been added",
+  };
 };
 
 export const selectParentCategory = (id) => {
