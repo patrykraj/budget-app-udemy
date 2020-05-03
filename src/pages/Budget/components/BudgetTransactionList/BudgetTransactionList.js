@@ -6,11 +6,14 @@ import { formatCurrency, formatDate } from "utils";
 
 import { List, ListItem } from "./BudgetTransactionList.css";
 
+import { Link } from "react-router-dom";
+
 function BudgetTransactionList({
   transactions,
   allCategories,
   selectedParentCategoryId,
   budgetedCategories,
+  handleClick,
 }) {
   const filteredTransactionsBySelectedParentCategory = (() => {
     if (typeof selectedParentCategoryId === "undefined") return transactions;
@@ -52,20 +55,30 @@ function BudgetTransactionList({
         <li key={key}>
           <ul>
             {transactions.map((transaction) => (
-              <ListItem key={transaction.id}>
-                <div>{transaction.description}</div>
-                <div>{formatCurrency(transaction.amount)}</div>
-                <div>{formatDate(transaction.date)}</div>
-                <div>
-                  {
-                    (
-                      allCategories.find(
-                        (category) => category.id === transaction.categoryId
-                      ) || {}
-                    ).name
-                  }
-                </div>
-              </ListItem>
+              <Link
+                key={transaction.id}
+                style={{
+                  textDecoration: "none",
+                  color: "#111",
+                }}
+                to={`/budget/transactions/${transaction.id}`}
+                onClick={() => handleClick(transaction)}
+              >
+                <ListItem key={transaction.id}>
+                  <div>{transaction.description}</div>
+                  <div>{formatCurrency(transaction.amount)}</div>
+                  <div>{formatDate(transaction.date)}</div>
+                  <div>
+                    {
+                      (
+                        allCategories.find(
+                          (category) => category.id === transaction.categoryId
+                        ) || {}
+                      ).name
+                    }
+                  </div>
+                </ListItem>
+              </Link>
             ))}
           </ul>
         </li>

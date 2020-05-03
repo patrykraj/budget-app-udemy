@@ -100,12 +100,6 @@ function budget(state = initialState, action) {
       };
 
     case BUDGET_TRANSACTION_ADD_SUCCESS:
-      console.log(
-        "loading state...",
-        newLoadingState,
-        "\nactions payload:",
-        action.payload
-      );
       delete newLoadingState.BUDGET_TRANSACTION_ADD_REQUEST;
 
       return {

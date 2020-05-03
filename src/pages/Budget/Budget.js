@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -10,7 +10,7 @@ import {
 import { fetchAllCategories } from "data/actions/common.action";
 
 import { Grid } from "./Budget.css";
-import { LoadingIndicator, Modal, Button } from "components";
+import { LoadingIndicator, Modal, TransactionModal, Button } from "components";
 
 import BudgetCategoryList from "pages/Budget/components/BudgetCategoryList/BudgetCategoryList";
 import BudgetTransactionList from "pages/Budget/components/BudgetTransactionList";
@@ -47,6 +47,27 @@ function Budget({
     });
   };
 
+  const [selectedItem, setSelectedItem] = useState();
+
+  const items = selectedItem
+    ? Object.entries(selectedItem).map(([key, transaction]) => {
+        console.log(selectedItem);
+        if (key === "categoryId") {
+          const item = allCategories.find((category) => {
+            return category.id === transaction;
+          });
+
+          return <p key={key}>category: {item ? item.name : "Other"}</p>;
+        }
+
+        return (
+          <p key={key}>
+            {key}: {transaction}
+          </p>
+        );
+      })
+    : undefined;
+
   return (
     <>
       <Grid>
@@ -59,7 +80,7 @@ function Budget({
           ) : (
             <>
               <Button to="/budget/transactions/new">Add new transaction</Button>
-              <BudgetTransactionList />
+              <BudgetTransactionList handleClick={setSelectedItem} />
             </>
           )}
         </section>
@@ -72,6 +93,9 @@ function Budget({
               onSubmit={handleSubmitAddTransaction}
             />
           </Modal>
+        </Route>
+        <Route path="/budget/transactions/:id">
+          <TransactionModal children={items} />
         </Route>
       </Switch>
     </>

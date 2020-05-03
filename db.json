@@ -170,124 +170,12 @@
       "id": "aqq7G-0"
     },
     {
-      "description": "Nowa transakcja1",
-      "amount": 10.5,
-      "categoryId": "3",
-      "date": "2020-02-19",
-      "budgetId": "1",
-      "id": "GNERO_K"
-    },
-    {
-      "description": "Nowa transakcja2",
-      "amount": 10.5,
-      "categoryId": "3",
-      "date": "2020-02-19",
-      "budgetId": "1",
-      "id": "M9B9puJ"
-    },
-    {
-      "description": "Nowa transakcja3",
-      "amount": 10.5,
-      "categoryId": "3",
-      "date": "2020-02-19",
-      "budgetId": "1",
-      "id": "gsP5R-B"
-    },
-    {
-      "description": "Nowa transakcja5",
-      "amount": 10.5,
-      "categoryId": "2",
-      "date": "2020-02-19",
-      "budgetId": "1",
-      "id": "EXvZu7Z"
-    },
-    {
-      "description": "Nowa transakcja5",
-      "amount": 10.5,
-      "categoryId": "3",
-      "date": "2020-02-20",
-      "budgetId": "1",
-      "id": "nd_u-b5"
-    },
-    {
-      "description": "Nowa transakcja6",
-      "amount": 10.5,
-      "categoryId": "3",
-      "date": "2020-02-20",
-      "budgetId": "1",
-      "id": "KBQrPmU"
-    },
-    {
-      "description": "Nowa transakcja7",
-      "amount": 10.6,
-      "categoryId": "3",
-      "date": "2020-02-20",
-      "budgetId": "1",
-      "id": "jHBfyjy"
-    },
-    {
-      "description": "no i dupa",
-      "amount": 11.99,
-      "categoryId": "3",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "gqmuHRi"
-    },
-    {
-      "description": "chuj",
-      "amount": 1232.99,
-      "categoryId": "4",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "3MhuOaj"
-    },
-    {
-      "description": "dzifki",
-      "amount": 123122.99,
-      "categoryId": "8",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "sPQ-TZY"
-    },
-    {
       "description": "sdaasd",
-      "amount": 2,
-      "categoryId": "5",
-      "date": "2020-05-01",
+      "amount": 11.99,
+      "categoryId": "2",
+      "date": "2020-05-03",
       "budgetId": "1",
-      "id": "an1sCb5"
-    },
-    {
-      "description": "hehehehhe",
-      "amount": -0.12,
-      "categoryId": "7",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "4pdchpp"
-    },
-    {
-      "description": "hehehehhe",
-      "amount": -0.12,
-      "categoryId": "7",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "RkSSPkF"
-    },
-    {
-      "description": "hehehehhe",
-      "amount": -0.12,
-      "categoryId": "7",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "oOW4hmr"
-    },
-    {
-      "description": "dadadadadad",
-      "amount": -0.04,
-      "categoryId": "6",
-      "date": "2020-05-01",
-      "budgetId": "1",
-      "id": "Uo5ZsUh"
+      "id": "Xp05JRQ"
     }
   ]
 }

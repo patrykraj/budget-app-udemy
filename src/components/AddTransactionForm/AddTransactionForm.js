@@ -26,56 +26,53 @@ function AddTransactionForm({ onSubmit, categories }) {
     [groupedCategoriesByParentName]
   );
 
+  const fieldsData = [
+    { name: "description", label: "Description", type: "text" },
+    {
+      name: "amount",
+      label: "Amount",
+      type: "number",
+      step: "0.01",
+      parse: true,
+    },
+    { name: "categoryId", label: "Category", type: "select" },
+    { name: "date", label: "Date", type: "date" },
+  ];
+
+  const fields = fieldsData.map((item) => {
+    return (
+      <Field
+        key={item.name}
+        name={item.name}
+        validate={required}
+        parse={item.parse ? (value) => parseFloat(value) : (value) => value}
+      >
+        {({ input, meta }) => (
+          <div>
+            <label>{item.label}</label>
+            {item.type === "select" ? (
+              <select {...input}>{categoryItems}</select>
+            ) : (
+              <input
+                {...input}
+                type={item.type}
+                placeholder={item.label}
+                step={item.type === "number" ? "0.01" : null}
+              />
+            )}
+            {meta.error && meta.touched && <span>{meta.error}</span>}
+          </div>
+        )}
+      </Field>
+    );
+  });
+
   return (
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Field name="description" validate={required}>
-            {({ input, meta }) => (
-              <div>
-                <label>Description</label>
-                <input {...input} type="text" placeholder="Description" />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field>
-          <Field
-            name="amount"
-            validate={required}
-            parse={(value) => parseFloat(value)}
-          >
-            {({ input, meta }) => (
-              <div>
-                <label>Amount</label>
-                <input
-                  {...input}
-                  type="number"
-                  step="0.01"
-                  placeholder="Amount"
-                />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field>
-          <Field name="categoryId" validate={required}>
-            {({ input, meta }) => (
-              <div>
-                <label>Category</label>
-                <select {...input}>{categoryItems}</select>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field>
-          <Field name="date" validate={required}>
-            {({ input, meta }) => (
-              <div>
-                <label>Date</label>
-                <input {...input} type="date" placeholder="Date" />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field>
+          {fields}
           <div className="buttons">
             <button type="submit" disabled={submitting}>
               Submit
